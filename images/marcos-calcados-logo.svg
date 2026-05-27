@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="575" height="230" viewBox="0 0 575 230" role="img" aria-labelledby="title desc">
+  <title id="title">Marcos Calçados</title>
+  <desc id="desc">Logo preto e dourado da Marcos Calçados</desc>
+  <rect width="575" height="230" rx="18" fill="#050505"/>
+  <rect x="18" y="18" width="539" height="194" rx="14" fill="none" stroke="#d4af37" stroke-width="4"/>
+  <path d="M154 141c25 16 59 16 84 0 5-3 12 1 11 8-1 10-11 20-26 27-17 8-38 8-55 0-15-7-25-17-26-27-1-7 7-11 12-8z" fill="#d4af37"/>
+  <path d="M154 128c18-31 63-31 81 0 2 4-1 9-6 9h-69c-5 0-8-5-6-9z" fill="none" stroke="#d4af37" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="286" y="102" text-anchor="middle" fill="#f5d76e" font-family="Poppins, Inter, Arial, sans-serif" font-size="44" font-weight="700">Marcos</text>
+  <text x="286" y="151" text-anchor="middle" fill="#d4af37" font-family="Poppins, Inter, Arial, sans-serif" font-size="38" font-weight="700">Calçados</text>
+  <text x="286" y="181" text-anchor="middle" fill="#f5d76e" font-family="Inter, Arial, sans-serif" font-size="15" letter-spacing="3">MODA E CALÇADOS</text>
+</svg>

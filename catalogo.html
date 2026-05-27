@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catálogo | Marcos Calçados</title>
+    <meta name="description" content="Catálogo da Marcos Calçados com atendimento pelo WhatsApp.">
+    <link rel="icon" href="images/marcos-calcados-logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="catalogo.css">
+  </head>
+  <body>
+    <header class="catalog-header">
+      <a class="brand" href="index.html">
+        <img src="images/marcos-calcados-logo.svg" alt="Marcos Calçados">
+      </a>
+      <nav>
+        <a href="index.html">Início</a>
+        <a id="support-link" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="toolbar">
+        <div>
+          <span class="eyebrow">Catálogo</span>
+          <h1>Produtos disponíveis</h1>
+        </div>
+        <form id="filters" class="filters">
+          <input id="search" type="search" placeholder="Buscar produto">
+          <select id="category">
+            <option value="">Todas as categorias</option>
+          </select>
+          <button type="submit">Buscar</button>
+        </form>
+      </section>
+
+      <section id="status" class="status">Carregando catálogo...</section>
+      <section id="products" class="products" aria-live="polite"></section>
+    </main>
+
+    <script src="js/marcos-config.js"></script>
+    <script src="catalogo.js"></script>
+  </body>
+</html>

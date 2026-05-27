@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel Admin | Marcos Calcados</title>
+    <link rel="stylesheet" href="admin.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <img src="../images/marcos-calcados-logo.svg" alt="Marcos Calçados">
+        <div>
+          <strong>Marcos Calçados</strong>
+          <span>Painel administrativo</span>
+        </div>
+      </div>
+      <form class="connection" id="connection-form">
+        <label>
+          API
+          <input id="api-url" type="url" value="http://localhost:3333" required>
+        </label>
+        <label>
+          Chave admin
+          <input id="admin-key" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Conectar</button>
+      </form>
+    </header>
+
+    <main class="shell">
+      <section class="status-bar">
+        <div>
+          <span class="eyebrow">Status</span>
+          <strong id="connection-status">Desconectado</strong>
+        </div>
+        <div class="stats" id="stats">
+          <span>Produtos: -</span>
+          <span>Categorias: -</span>
+          <span>Pedidos: -</span>
+          <span>Newsletter: -</span>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="Seções do painel">
+        <button class="tab is-active" type="button" data-tab="products">Produtos</button>
+        <button class="tab" type="button" data-tab="categories">Categorias</button>
+        <button class="tab" type="button" data-tab="orders">Pedidos</button>
+      </nav>
+
+      <section class="panel is-active" id="tab-products">
+        <div class="layout-two">
+          <form class="form-panel" id="product-form">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">Cadastro</span>
+                <h1 id="product-form-title">Adicionar produto</h1>
+              </div>
+              <button class="ghost" id="new-product" type="button">Novo</button>
+            </div>
+
+            <input id="product-id" type="hidden">
+
+            <div class="grid">
+              <label>
+                Nome
+                <input id="product-name" type="text" required>
+              </label>
+              <label>
+                Slug
+                <input id="product-slug" type="text" placeholder="gerado automaticamente">
+              </label>
+            </div>
+
+            <label>
+              Categoria
+              <select id="product-category">
+                <option value="">Sem categoria</option>
+              </select>
+            </label>
+
+            <label>
+              Descrição
+              <textarea id="product-description" rows="4"></textarea>
+            </label>
+
+            <div class="grid">
+              <label>
+                Preço
+                <input id="product-price" type="text" inputmode="decimal" placeholder="129,90" required>
+              </label>
+              <label>
+                Preço antigo
+                <input id="product-compare-price" type="text" inputmode="decimal" placeholder="159,90">
+              </label>
+            </div>
+
+            <div class="grid">
+              <label>
+                SKU
+                <input id="product-sku" type="text">
+              </label>
+              <label>
+                Estoque
+                <input id="product-stock" type="number" min="0" step="1">
+              </label>
+            </div>
+
+            <label>
+              URL da imagem
+              <input id="product-image" type="url" placeholder="https://...">
+            </label>
+
+            <label class="checkline">
+              <input id="product-active" type="checkbox" checked>
+              Produto ativo na loja
+            </label>
+
+            <label>
+              Variações novas
+              <textarea id="product-variants" rows="4" placeholder="Preto 38 | SKU-38 | 129,90 | 5&#10;Preto 39 | SKU-39 | 129,90 | 3"></textarea>
+              <small>Uma variação por linha: nome | sku | preço | estoque.</small>
+            </label>
+
+            <div class="actions">
+              <button type="submit">Salvar produto</button>
+              <button class="ghost" type="button" id="clear-product">Limpar</button>
+            </div>
+          </form>
+
+          <section class="list-panel">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">Catálogo</span>
+                <h2>Produtos cadastrados</h2>
+              </div>
+              <form class="search" id="product-search-form">
+                <input id="product-search" type="search" placeholder="Buscar produto">
+                <button type="submit">Buscar</button>
+              </form>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="products-body">
+                  <tr>
+                    <td colspan="5">Conecte a API para carregar os produtos.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="tab-categories">
+        <div class="layout-two compact">
+          <form class="form-panel" id="category-form">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">Cadastro</span>
+                <h1>Adicionar categoria</h1>
+              </div>
+            </div>
+            <label>
+              Nome
+              <input id="category-name" type="text" required>
+            </label>
+            <label>
+              Slug
+              <input id="category-slug" type="text" placeholder="gerado automaticamente">
+            </label>
+            <button type="submit">Salvar categoria</button>
+          </form>
+
+          <section class="list-panel">
+            <div class="panel-head">
+              <div>
+                <span class="eyebrow">Organização</span>
+                <h2>Categorias</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Slug</th>
+                  </tr>
+                </thead>
+                <tbody id="categories-body">
+                  <tr>
+                    <td colspan="2">Conecte a API para carregar categorias.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="tab-orders">
+        <section class="list-panel">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow">Operação</span>
+              <h1>Pedidos</h1>
+            </div>
+            <button class="ghost" id="refresh-orders" type="button">Atualizar</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Itens</th>
+                </tr>
+              </thead>
+              <tbody id="orders-body">
+                <tr>
+                  <td colspan="4">Conecte a API para carregar pedidos.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="admin.js"></script>
+  </body>
+</html>
